@@ -1,0 +1,125 @@
+﻿{
+	"popup_downloader_text": {
+		"message": "Debrideur"
+	},
+	
+	"submissionWindows_title": {
+		"message": "Lien(s) RS/MU/MV/HF/FS/UL/FN/DF/VBB/UD (un lien par ligne, 8 liens maximum):"
+	},
+
+	"submissionWindows_note": {
+		"message": "Note: RS - 10 liens max. VideoBB - 1 lien max"
+	},
+
+	"submissionWindow_mu_password": {
+		"message": "MU/MV le mot de passe (facultatif):"
+	},
+	
+	"submissionWindow_linkcount": {
+		"message": "Vous avez entré"
+	},
+	
+	"submissionWindow_link": {
+		"message": "lien(s)"
+	},
+   
+	"generatedlink_link": {
+		"message": "Lien "
+	},
+	
+	"generatedlink_download_links": {
+		"message": "Lien(s) de téléchargement"
+	},
+	
+	"generatedlink_first_line_note": {
+		"message": "Ne fermez pas cette fenêtre jusqu'à ce que vos liens de téléchargement soient généré."
+	},
+	
+	"generatedlink_second_line_note": {
+		"message": "Si les liens ne sont pas générés, Recommencer !"
+	},
+	
+	"generatedlink_copy_button": {
+		"message": "Copier"
+	},
+	
+	"background_sendto_subwin": {
+		"message": "Envoyer à submission window"
+	},
+	
+	"background_download" : {
+		"message": "Télécharger"
+	},
+	
+	"background_notloggedin": {
+		"message": "Note : Vous n''êtes pas connecté à debridmax. Connectez-vous à debridmax avant d'utiliser."
+	},
+		
+	"background_login_link": {
+		"message": "Connexion"
+	},
+	
+	"background_files": {
+		"message": "fichier(s)"
+	},
+	
+	"background_verify_message":{
+		"message": "Raisons possible : \n1. Le lien / mot de passe est invalide.\n2. Le service de debridage est en panne.\n3. Nos comptes premium sont hors service.\n4. Auto-connextion nom pseudo ou mot de passe sont incorrects"
+	},
+	
+	"background_auto_login_error":{
+		"message": "Auto-connextion nom pseudo ou mot de passe sont incorrects"
+	},
+	
+	"background_error_when_generate":{
+		"message": "Erreur lors de la génération."
+	},
+		
+	"background_links_copied":{
+		"message": "Lien(s) copier"
+	},
+	
+	"background_debridmax_url":{
+		"message": "http://www.debridmax.com/"
+	},
+		
+	"content_download_all":{
+		"message": "Tous téléchargés"
+	},
+	
+	"content_download":{
+		"message": "Télécharger"
+	},
+	
+	"content_warning_download_selected":{
+		"message": "Cliquez sur le lien(s) d'abord, puis cliquez sur \"Télécharger\""
+	},
+	
+	"content_supported_hosts":{
+		"message": "Seuls RS, MU, MV, HF, FS, FN, UL, DF, UD, et VBB sont actuellement pris en charge"
+	},
+	
+	"manifest_description":{
+		"message": "Télécharger RS, MU, HF, FS, FN, DF, UL, VBB, et beaucoup d'autres facilement par l'intermédiaire de DebridMax. GRATUIT !!! S'il vous plaît taux de don et de cette extension à l'appui Debridmax"
+	},
+	
+	"option_autogenerate_text":{
+		"message": "Auto-générer (l'exception de partage de vidéos)"
+	},
+	
+	"option_autologin_text":{
+		"message": "Auto-connexion"
+	},
+	
+	"option_autologin_username":{
+		"message": "Pseudo/Email"
+	},
+	
+	"option_autologin_password":{
+		"message": "Pass"
+	},
+	
+	"option_autogenerate_note":{
+		"message": "Note: Par exemple, si vous trouvez un lien MU (i.e megaupload.com/?d=IQJBRGVL) et vous cliquez dessus, il va générer le lien de téléchargement au lieu d'ouvrir la page MU"
+	}
+}

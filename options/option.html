@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+Source code: adapted from http://net.tutsplus.com/tutorials/html-css-techniques/how-to-create-a-slick-tabbed-content-area/
+Modified by: viperfx07
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Debridmax Extension - Option</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+    <script src="../jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	
+	  // When the document loads do everything inside here ...
+	  $(document).ready(function(){
+		
+		//BEGIN Tabs functions
+		// When a link is clicked
+		$("a.tab").click(function () {
+						
+			// switch all tabs off
+			$(".active").removeClass("active");
+			
+			// switch this tab on
+			$(this).addClass("active");
+			
+			// slide all content up
+			$(".content").slideUp();
+			
+			// slide this content up
+			var content_show = $(this).attr("title");
+			$("#"+content_show).slideDown();
+		  
+		});
+		
+		//END Tabs functions
+		
+		
+		//--begin set auto generate
+		if(localStorage["auto-generate-click"]==1)
+			$('input#auto_generate').attr('checked',true);
+		else
+			$('input#auto_generate').attr('checked',false);
+		
+		$("input#auto_generate").change(function(){
+			if(localStorage["auto-generate-click"]==1)
+				localStorage["auto-generate-click"]=0;
+			else
+				localStorage["auto-generate-click"]=1;
+					
+		});
+		//--end set auto generate
+		
+		//--begin set auto login
+		//set value to respective input tags
+		if(localStorage["auto-login"]==1)
+			$('input#auto_login').attr('checked',true);
+		else
+			$('input#auto_login').attr('checked',false);
+			
+		$("input#auto_login_user").val(localStorage["auto-login-user"]);
+		$("input#auto_login_pass").val(localStorage["auto-login-pass"]);
+		
+		
+		//if change the auto-login checkbox
+		$("input#auto_login").change(function(){
+			if(localStorage["auto-login"]==1){
+				localStorage["auto-login"]=0;
+				localStorage["auto-login-user"]=""
+				localStorage["auto-login-pass"]=""
+				$("input#auto_login_user").val("");
+				$("input#auto_login_pass").val("");
+			}
+			else
+				localStorage["auto-login"]=1;
+					
+		});
+		
+		//if typing in the username input box
+		$("input#auto_login_user").keyup(function(){
+			localStorage["auto-login-user"] = $(this).val();
+		});
+		
+		//if typing in the password input box
+		$("input#auto_login_pass").keyup(function(){
+			localStorage["auto-login-pass"] = $(this).val();
+		});
+		
+		//--end set auto login
+		
+		$("a#web").attr('href',chrome.i18n.getMessage("background_debridmax_url"));
+		
+		$.getJSON('../manifest.json', function(json) {
+			$("#version").html(json.version);
+			});
+	  });
+  </script>
+</head>
+
+<body>
+
+
+<div id="tabbed_box_1" class="tabbed_box">
+	<h4>Option Page</h4>
+    <div class="tabbed_area">
+        <ul class="tabs">
+            <li><a href="#" title="content_1" class="tab active">Settings</a></li>
+            <li><a href="#" title="content_2" class="tab">About</a></li>
+        </ul>
+        
+        <div id="content_1" class="content" style="display: block; ">
+        	<ul>
+            	<li>
+					<div id="auto-login">
+						<table>
+						<tr>
+							<td><script type="text/javascript">
+								//<![CDATA[
+								document.write(chrome.i18n.getMessage("option_autologin_text") + ": ");
+								//]]>
+								</script></td>
+							<td><input type="checkbox" id="auto_login" value="1" /></td>
+						</tr>
+						<tr>
+							<td><script type="text/javascript">
+								//<![CDATA[
+								document.write(chrome.i18n.getMessage("option_autologin_username") + ": ");
+								//]]>
+								</script></td>
+							<td><input type="text" name="user" id="auto_login_user" /></td>
+						</tr>
+						<tr>
+							<td><script type="text/javascript">
+								//<![CDATA[
+								document.write(chrome.i18n.getMessage("option_autologin_password") + ": ");
+								//]]>
+								</script></td>
+							<td><input type="password" name="pass" id="auto_login_pass" /></td>
+						</tr>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div id="auto-generate" class="realcontainer">
+						<p><script type="text/javascript">
+							//<![CDATA[
+							document.write(chrome.i18n.getMessage("option_autogenerate_text") + ": ");
+							//]]>
+							</script>
+						<input type="checkbox" id="auto_generate" value="1" /></p>
+						<small><script type="text/javascript">
+						//<![CDATA[
+						document.write(chrome.i18n.getMessage("option_autogenerate_note"));
+						//]]></script></small>
+					</div>
+				</li>
+            </ul>
+        </div>
+        <div id="content_2" class="content" style="display: none; ">
+        	<ul>
+            	<li>
+				<div id="about">
+					<br />
+					<center>
+						<img src="../logo.png" alt="logo" /><br />
+						<font size="4" style="font-weight: bold;">DebridMax Extension</font><br />
+						Version <span id="version"></span> <br />
+						<b>Coded by :</b><br />
+						<a href="" style="text-decoration:none;">viperfx07</a><br />
+						<b>Website :</b><br />
+						<a id="web" href="http://www.debridmax.com/" style="text-decoration:none;" >
+						<script type="text/javascript">
+						//<![CDATA[
+							document.write(chrome.i18n.getMessage("background_debridmax_url"));
+						//]]>
+						</script>
+						</a>
+					</center>
+					<br />
+				</div>
+				</li>
+            </ul>
+        </div>
+	</div>
+</div>
+</body>
+</html>
