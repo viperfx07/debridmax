@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DebridMax Chrome Extension: Downloader</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="content.js"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+			
+	//Open login page in new tab
+	function goToDebridMax()
+	{
+		chrome.tabs.create({url:chrome.i18n.getMessage("background_debridmax_url")});
+	}
+	
+	function showCachedLinks()
+	{
+		$("#link").val(localStorage["subwin_links"]);
+		countLinks();
+	}
+	
+	function countLinks()
+	{
+		var str = $.trim($("#link").val());
+		var total;
+		if(str.length == 0)
+			total = 0;
+		else
+			total = str.split("\n").length;
+			
+		$("#line_counter").html(chrome.i18n.getMessage("submissionWindow_linkcount") + " " + total + " " + chrome.i18n.getMessage("submissionWindow_link"));
+	}
+	
+	$(document).ready(function(){
+	   
+		$("#link").keyup(countLinks);
+		$("#link").focus(countLinks);
+		
+		//Draw generate/GO buttons
+		$("#generate").click(function(){
+			
+			localStorage["subwin_links"] = "";
+		
+			links = $.trim($("#link").val());
+		
+			if($("#pass").val() != "")
+				links = links + "&" + $("#pass").val();
+			else
+				links = links + "&" + "";
+		
+			chrome.extension.sendRequest({requestType:"dl", the_links:links, the_host:setHost((links.split("\n"))[0])});	
+				
+		});
+		
+		showCachedLinks();
+		countLinks();
+		
+		//set the text based on internationalization
+		$("#text1").html(chrome.i18n.getMessage("submissionWindows_note"));
+		$("#text2").html(chrome.i18n.getMessage("submissionWindows_title"));
+		$("#pass_note").html(chrome.i18n.getMessage("submissionWindow_mu_password"));
+		$("#logo").html("<a href='javascript:goToDebridMax();'><img src='logo.png' height='100'/></a>");
+		$("a#donatelink").attr('href','javascript:chrome.tabs.create({url:"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VPJ5YQHBG7L36"})');
+		
+		
+	});
+	//]]>
+	</script>
+
+	<style type="text/css">
+	body {
+		background: #000000;
+		margin: 0;
+		padding: 0;
+		font: 11px normal Verdana, Arial, Helvetica, sans-serif;
+		color: #fff;
+		width:435px;
+		overflow-x:hidden;
+	}
+
+	.container {height:350px; width: 435px; margin: 10px auto; float:left;}
+	#logo {width:257px; float:left;}
+	#donate {float:left; margin:10px auto;}
+	#line_counter {font-style: italic; color: #ff3;}
+	</style>
+</head>
+
+<body>
+	<div id="logo"></div>
+	<div id="donate">
+		<a id="donatelink" href="#"><img src="btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" /></a>
+		<img alt="" border="0" src="pixel.gif" width="1" height="1" />
+	</div>
+	<div class="container">
+		<hr />
+		<div id="text1"></div>
+		<span id="text2"></span>
+		<textarea id="link" cols="48" rows="10"></textarea>
+		<br />
+		<span id="line_counter">0 link(s)</span><br/>
+		<span id="pass_note"></span><input id="pass" type="text" name="pass" />
+		<br />
+		<center><input type="button" id="generate" value="GO"/></center>
+		
+	</div>
+</body>
+</html>
