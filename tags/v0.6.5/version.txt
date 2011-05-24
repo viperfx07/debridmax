@@ -1,0 +1,131 @@
+v0.6.5
+--------
+- Added "english" login details back
+- Changed content's background color and font on option page
+- Changed login() name to loginWithSavedDetails() in  background.html
+- Fixed a little bug on generated_link.html when first loading
+- Fixed bug when generating the links when auto-login is checked but wrong username/pwd
+- Back to all-in-one generator
+- Changed the debridmax error msg using i18n
+
+v0.6.4
+--------
+- Better option page.
+- Modified source of context_button.js a bit.
+- Added Rapidshare.
+
+v0.6.3
+------
+- Fixed compatibility with Debridmax final version
+- Updated the logo on popup, subwin, and generatedLink page
+- Changed line 83 messages.json en.
+- Deleted ads on subwin
+- Deleted loader on subwin
+- Used chrome.extension.sendRequest instead of instantiating background page on subwin
+- Added TIMEOUT_TIME in const and content.js
+
+v0.6.2
+------
+- if auto-login is set, no need to call init when open the popup window
+
+v0.6.1
+------
+- added free.fr filter in content and context_button.js
+- fixed popup details to refer to locale.
+
+v0.6
+------
+- Added context menu to send/save download links to submissionWindow for later submission.
+- loader (load.gif) for submission window.
+- Added link counter on submission window.
+- Fixed Download All button to receive not only text but also <a> tag links
+- Added auto-login
+
+v0.5.6:
+-------
+- Better filter for Download All/Download buttons, Direct Download function, and setHost function
+- Fixed videobb (due to Debridmax's bad programming style)
+
+v0.5.5:
+-------
+- Fixed option.html problem that always sets the checkbox to unchecked
+- Changed generated_link.html window to open in the center
+- Updated the codes (background.html and _locales) to not show the quota and limit (since it says it's unlimited)
+- Add Ginyas ads
+
+v0.5.4:
+-------
+- Changed generated_link.html & revalidate HTMLs.
+
+v0.5.3:
+-------
+- Changed the ads script
+
+v0.5.2:
+------
+- Added ads script
+
+v0.5.1:
+-------
+- Added Donate button
+
+v0.5:
+-----
+- Modified all the HTML files (except background.html) to valid ones
+- Added context_button.js
+  (When selecting links, it will show the generate button (debridmax icon) and
+  when users click it, it will generate the original links (not the text).)
+- Modified the generateBy function to:
+	- always check whether users have logged in if the functions is called
+	- open the generated_link when the link(s) is ready
+- Modified generated_link.html (no textarea needed).
+- Modified popup.html (fix the bug that shows "open downloader" link eventhough the user's not logged in)
+- Added favicon for submissionWindow.html and generated_link.html
+
+v0.4.2:
+-------
+- Changed background.html line 74 from "div.entry > p" to "blockblockB > p"
+
+v0.4.1:
+-------
+- Fixed the typo in Option.
+
+v0.4:
+-----
+- Added MultiDebrideur functionality as on the website.
+- Improved filter for drawing Download & Download All buttons (added "blockquote" tag)
+- Changed the verify_message sentences.
+
+v0.3:
+-----
+- Fixed the bug in content.js that allowed to download when the user is not logged in.
+- Changed manifest.json description abit
+
+v0.2.2:
+------
+- Fixed the details sentences (2 languages supported now)
+
+
+v0.2.1
+------
+- Changed Filesonic server
+- Added logo to download box and change background
+- Added option to choose auto-generate.
+
+
+v0.2
+-----
+- Added 2 languages: English and French
+- Added option page
+- Fixed auto-generate
+- Fixed context menu
+
+v0.1
+----
+- Early version of DebridMax
+
+
+
+
+
+
