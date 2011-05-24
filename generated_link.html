@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DebridMax Chrome Extension: Generated Links</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+	var links="";
+	
+	function showTheLinks()
+	{
+		var bg = chrome.extension.getBackgroundPage();
+		var anchorlinks="";
+		var startIndex = 0;
+				
+		var linksarray = (localStorage["linksarray"]).split(",");
+		var textInLink = (localStorage["textInLink"]).split(",");
+		var totallinks = linksarray.length - 1; //due to trailing comma at the end, so the last value of the array is always null			
+		
+					
+		for(i=startIndex;i<totallinks;i++)
+		{
+			links+=linksarray[i]+"\r\n";
+			anchorlinks += chrome.i18n.getMessage("generatedlink_link") + (i+1) + ': <a href='+linksarray[i]+'>'+textInLink[i]+'</a><br/>';
+		}
+		
+		$("#anchorlinks").append(anchorlinks);
+				
+		localStorage["linksarray"] = localStorage["textInLink"] = "";
+		localStorage["totallinks"] = 0;
+		bg.setBadge('v');
+	}
+	
+	$(document).ready(function(){
+	
+		//set the text based on internationalization
+		$("h2").text(chrome.i18n.getMessage("generatedlink_download_links"));
+		$("#text1").text(chrome.i18n.getMessage("generatedlink_first_line_note"));
+		$("#text2").text(chrome.i18n.getMessage("generatedlink_second_line_note"));
+			
+		$("#copy").val(chrome.i18n.getMessage("generatedlink_copy_button"));
+				
+		showTheLinks();
+		
+		$("#copy").click(function(){ 
+			chrome.extension.sendRequest({requestType:"cp", the_links:links});
+			});
+		});
+	//]]>
+	</script>
+	<style type="text/css">
+		body {
+			background: #000000;
+			margin: 0;
+			padding: 0;
+			font: 11px normal Verdana, Arial, Helvetica, sans-serif;
+			color: #fff;
+			width:435px;
+			overflow-x:hidden;
+		}
+		#logo {width:257px; float:left;}
+		#donate {margin:10px auto; height:100px; position:relative; display:block;}
+		h2 {text-decoration:underline;}
+		a { font:12px; color: #f00; }
+		a:hover { color: #ff0105; } 
+	</style>
+</head>
+<body>
+	<div id="logo"><a id="logolink" href="#"><img src='logo.png' alt="logo" height="100"/></a></div>
+	<div id="donate">
+		<a id="donatelink" href="#"><img src="btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" /></a>
+		<img alt="paypal" border="0" src="pixel.gif" width="1" height="1" />
+	</div>
+	<hr />
+	<h2></h2>
+	<div id="text1"></div>
+	<div id="text2"></div>
+	<input id="copy" type="button" value=""/>
+	<div id="anchorlinks" style="font-size:12px"></div>
+</body>	
+	
+</html>
