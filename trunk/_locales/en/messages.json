@@ -1,0 +1,125 @@
+﻿{
+	"popup_downloader_text": {
+		"message": "Open Downloader"
+	},
+	
+	"submissionWindows_title": {
+		"message": "Enter RS/MU/MV/HF/FS/UL/FN/DF/VBB/UD link(s) (1 link per line, maximum 8 links):"
+	},
+
+	"submissionWindows_note": {
+		"message": "Note: RS - 10 links max. VideoBB - 1 link max"
+	},
+
+	"submissionWindow_mu_password": {
+		"message": "MU/MV file password (optional):"
+	},
+   
+   "submissionWindow_linkcount": {
+		"message": "You've entered"
+	},
+	
+	"submissionWindow_link": {
+		"message": "link(s)"
+	},
+	
+	"generatedlink_link": {
+		"message": "Link "
+	},
+	
+	"generatedlink_download_links": {
+		"message": "Download Link(s)"
+	},
+	
+	"generatedlink_first_line_note": {
+		"message": "Do not close this window until your download links are generated."
+	},
+	
+	"generatedlink_second_line_note": {
+		"message": "If the links are not generated, try again!"
+	},
+	
+	"generatedlink_copy_button": {
+		"message": "Copy to Clipboard"
+	},
+	
+	"background_sendto_subwin": {
+		"message": "Send to submission window"
+	},
+	
+	"background_download" : {
+		"message": "Download"
+	},
+	
+	"background_notloggedin": {
+		"message": "Note: You are not currently logged in to Debridmax. Please login before using the tool."
+	},
+	
+	"background_login_link": {
+		"message": "Login"
+	},
+	
+	"background_files": {
+		"message": ""
+	},
+	
+	"background_verify_message":{
+		"message": "Possible reasons: \n1. The link and/or password is invalid.\n2. The service is down.\n3. The premium accounts are out of order.\n4. Auto-login username or password is incorrect"
+	},
+	
+	"background_auto_login_error":{
+		"message": "Auto-login username or password is incorrect"
+	},
+	
+	"background_error_when_generate":{
+		"message": "Error when generating the links."
+	},
+	
+	"background_links_copied":{
+		"message": "Link(s) copied"
+	},
+	
+	"background_debridmax_url":{
+		"message": "http://www.debridmax.com/en/"
+	},
+		
+	"content_download_all":{
+		"message": "Download All"
+	},
+	
+	"content_download":{
+		"message": "Download"
+	},
+	
+	"content_warning_download_selected":{
+		"message": "Select the link(s) first, then click \"Download\""
+	},
+	
+	"content_supported_hosts":{
+		"message": "Only RS, MU, MV, HF, FS, FN, UL, FD, UD, and VBB are currently supported"
+	},
+	
+	"manifest_description":{
+		"message": "Free download premium RS, MU, HF, FS, FN, DF, UL, VBB, and many others easily via DebridMax. FREE !!! Please rate and donate this extension to support Debridmax"
+	},
+	
+	"option_autogenerate_text":{ 
+		"message": "Auto-generate (except video sharing)"
+	},
+	
+	"option_autologin_text":{
+		"message": "Auto-login"
+	},
+	
+	"option_autologin_username":{
+		"message": "Username / Email"
+	},
+	
+	"option_autologin_password":{
+		"message": "Password"
+	},
+	
+	"option_autogenerate_note":{
+		"message": "Note: For example, if you find an MU link (i.e megaupload.com/?d=IQJBRGVL) and you click it, it will generate the download link instead of opening the MU page"
+	}
+}
