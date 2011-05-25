@@ -47,28 +47,13 @@ function filterTheLink(link) {
 //set the host (rapidshare/megaupload/hotfile/etc)
 function setHost(theString)
 {
-	//if there's RS
-	//var host="";
-	//var hostFilterIndex = filterTheLink(theString);
-
-	
-	/*
-	if(hostFilterIndex==0)
-		host=RS_DM;
-	else
-		host=MD_DM;
-	
-	return host;
-	*/
-	return MD_DM
+	return MD_DM;
 }
-
 
 //Draw Download and Download All for tag that contains download links.
 $("td.code, pre, blockquote").each(function() {
 		setButtons($(this));
 });
-
 
 //"Download Selected" button on page
 $('.downloadSelected').click(
@@ -81,12 +66,10 @@ $('.downloadSelected').click(
 			var thelinks = selectedText.split("\n");
 			chrome.extension.sendRequest({requestType:"dl", the_links:selectedText, the_host:setHost(thelinks[0])});
 		}
-		
 });
 	
 //BEGIN Direct Download Functions
-function requestLink(thelink)
-{
+function requestLink(thelink){
 	chrome.extension.sendRequest({requestType:"dl", the_links:thelink, the_host:setHost(thelink)});
 }
 

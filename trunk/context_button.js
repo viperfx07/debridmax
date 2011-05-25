@@ -144,9 +144,9 @@ function viewPartialSourceForSelection(){
     if (range) {
         var div = range.startContainer.ownerDocument.createElement('div');
         div.appendChild(range.cloneContents());
-        return(div.innerHTML); // html source
+        return(div.innerHTML);
     }
-    return selection.toString(); // text
+    return selection.toString();
 }
 
 var btn = new ContextButton();

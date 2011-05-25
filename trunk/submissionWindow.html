@@ -12,19 +12,16 @@
 	//<![CDATA[
 			
 	//Open login page in new tab
-	function goToDebridMax()
-	{
+	function goToDebridMax(){
 		chrome.tabs.create({url:chrome.i18n.getMessage("background_debridmax_url")});
 	}
 	
-	function showCachedLinks()
-	{
+	function showCachedLinks(){
 		$("#link").val(localStorage["subwin_links"]);
 		countLinks();
 	}
 	
-	function countLinks()
-	{
+	function countLinks(){
 		var str = $.trim($("#link").val());
 		var total;
 		if(str.length == 0)
