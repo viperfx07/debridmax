@@ -91,7 +91,6 @@ function isLoginToDebridmax() {
 			isLoginOK=1;
 			login_details.DM.user = $("h3",data).html();
 			setBadge("v");
-			//login_details.DM.premium_accs = $("div#useful-links.box div",data).html();
 		} 
 	
 	},
@@ -142,66 +141,35 @@ function generateBy(theURL,linksControlValue) {
 		
 		localStorage["totallinks"]=0;
 		
-		/*uncomment 2 lines below if there's RS-separated generator
-		if(setHost(the_links[0]) == MD_DM)  
-		{*/
-			for(var i=0; i<the_links.length; i++)
-			{
-				postdata = "hotlink="+encodeURIComponent(the_links[i])+"&pass="+encodeURIComponent(value[1])+"&t=2e";
-				
-				$.ajax({
-				type:"POST",
-				timeout: TIMEOUT_TIME,
-				async:false,
-				cache:false,
-				url: MD_DM + "p.php",
-				data: postdata,
-				success:function(msg)
-				{
-					console.log("success POST links to multimax");
-					if(msg.indexOf("<b>Lien mort</b>")<0 && msg.indexOf("<b>Vous devez passer en premium pour utiliser depositfiles...</b>")<0)
-					{
-						localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + ',';
-						localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + ',';
-						localStorage["totallinks"]++;
-					}
-				},
-				
-				error: function(msg){
-					alert("DebridMax: Timeout. " + chrome.i18n.getMessage("background_verify_message"));
-					setBadge('v');
-				}
-				});
-			}
-		//}
-		
-		/*if RS
-		else{
-			postdata = "rslinks="+encodeURIComponent(linksControlValue)+"&x=99&y=99";
+		for(var i=0; i<the_links.length; i++)
+		{
+			postdata = "hotlink="+encodeURIComponent(the_links[i])+"&pass="+encodeURIComponent(value[1])+"&t=2e";
 			
 			$.ajax({
-				type:"POST",
-				timeout: TIMEOUT_TIME,
-				async:false,
-				cache:false,
-				url: RS_DM + "index.php",
-				data: postdata,
-				success:function(msg)
+			type:"POST",
+			timeout: TIMEOUT_TIME,
+			async:false,
+			cache:false,
+			url: MD_DM + "p.php",
+			data: postdata,
+			success:function(msg)
+			{
+				console.log("success POST links to multimax");
+				if(msg.indexOf("<b>Lien mort</b>")<0 && msg.indexOf("<b>Vous devez passer en premium pour utiliser depositfiles...</b>")<0)
 				{
-					$('a[href*=rs.php]',msg).each(function(){
-						localStorage["linksarray"] = localStorage["linksarray"] + $(this).attr('href') + ',';
-						localStorage["textInLink"] = localStorage["textInLink"] + $(this).html() + ',';
-						localStorage["totallinks"]++;
-					});
-				},
-				
-				error: function(msg){
-					alert("DebridMax: Timeout. " + chrome.i18n.getMessage("background_verify_message"));
-					setBadge('v');
+					localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + ',';
+					localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + ',';
+					localStorage["totallinks"]++;
 				}
-				});
+			},
+			
+			error: function(msg){
+				alert("DebridMax: Timeout. " + chrome.i18n.getMessage("background_verify_message"));
+				setBadge('v');
+			}
+			});
 		}
-		*/
+		
 		if(localStorage["totallinks"]>0) //if no links generated
 			openNewWindow("generated_link.html");
 		else

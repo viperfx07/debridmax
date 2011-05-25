@@ -1,8 +1,8 @@
-v0.6.6
+v0.6.6 [free v0.6.5]
 ------
 - Removed auto-login
 
-v0.6.5
+v0.6.5 [premium]
 --------
 - Added "english" login details back
 - Changed content's background color and font on option page
