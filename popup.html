@@ -41,10 +41,7 @@
 		//Initiate refresh button for login/server details
 		var notloggedin_text = chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
 		
-		//if auto-login is set, no need to call init when open the popup window
-		if(bg.login_details.DM.user == "" || localStorage["auto-login"] == 0 || localStorage["auto-login"] == "" || 
-			localStorage["auto-login-pass"]=="" || localStorage["auto-login-user"]=="")
-			bg.init();
+		bg.init();
 					
 		if(bg.login_details.DM.user == notloggedin_text || bg.login_details.DM.user =="")
 			$("#subWindow").hide();
