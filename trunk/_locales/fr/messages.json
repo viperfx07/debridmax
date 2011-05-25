@@ -121,5 +121,9 @@
 	
 	"option_autogenerate_note":{
 		"message": "Note: Par exemple, si vous trouvez un lien MU (i.e megaupload.com/?d=IQJBRGVL) et vous cliquez dessus, il va générer le lien de téléchargement au lieu d'ouvrir la page MU"
+	},
+	
+	"option_autologin_premiumnote":{
+		"message": "Auto-connexion est maintenant fonctionnalité prime. Pour de plus amples renseignements, s'il vous plaît écrivez-moi à viperfx07@gmail.com"
 	}
 }
