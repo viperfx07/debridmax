@@ -38,8 +38,7 @@ Modified by: viperfx07
 		});
 		
 		//END Tabs functions
-		
-		
+				
 		//--begin set auto generate
 		if(localStorage["auto-generate-click"]==1)
 			$('input#auto_generate').attr('checked',true);
@@ -54,43 +53,6 @@ Modified by: viperfx07
 					
 		});
 		//--end set auto generate
-		
-		//--begin set auto login
-		//set value to respective input tags
-		if(localStorage["auto-login"]==1)
-			$('input#auto_login').attr('checked',true);
-		else
-			$('input#auto_login').attr('checked',false);
-			
-		$("input#auto_login_user").val(localStorage["auto-login-user"]);
-		$("input#auto_login_pass").val(localStorage["auto-login-pass"]);
-		
-		
-		//if change the auto-login checkbox
-		$("input#auto_login").change(function(){
-			if(localStorage["auto-login"]==1){
-				localStorage["auto-login"]=0;
-				localStorage["auto-login-user"]=""
-				localStorage["auto-login-pass"]=""
-				$("input#auto_login_user").val("");
-				$("input#auto_login_pass").val("");
-			}
-			else
-				localStorage["auto-login"]=1;
-					
-		});
-		
-		//if typing in the username input box
-		$("input#auto_login_user").keyup(function(){
-			localStorage["auto-login-user"] = $(this).val();
-		});
-		
-		//if typing in the password input box
-		$("input#auto_login_pass").keyup(function(){
-			localStorage["auto-login-pass"] = $(this).val();
-		});
-		
-		//--end set auto login
 		
 		$("a#web").attr('href',chrome.i18n.getMessage("background_debridmax_url"));
 		
@@ -115,38 +77,8 @@ Modified by: viperfx07
         <div id="content_1" class="content" style="display: block; ">
         	<ul>
             	<li>
-					<div id="auto-login">
-						<table>
-						<tr>
-							<td><script type="text/javascript">
-								//<![CDATA[
-								document.write(chrome.i18n.getMessage("option_autologin_text") + ": ");
-								//]]>
-								</script></td>
-							<td><input type="checkbox" id="auto_login" value="1" /></td>
-						</tr>
-						<tr>
-							<td><script type="text/javascript">
-								//<![CDATA[
-								document.write(chrome.i18n.getMessage("option_autologin_username") + ": ");
-								//]]>
-								</script></td>
-							<td><input type="text" name="user" id="auto_login_user" /></td>
-						</tr>
-						<tr>
-							<td><script type="text/javascript">
-								//<![CDATA[
-								document.write(chrome.i18n.getMessage("option_autologin_password") + ": ");
-								//]]>
-								</script></td>
-							<td><input type="password" name="pass" id="auto_login_pass" /></td>
-						</tr>
-						</table>
-					</div>
-				</li>
-				<li>
-					<div id="auto-generate" class="realcontainer">
-						<p><script type="text/javascript">
+					<div id="auto-generate">
+						<p style="font-weight:bold; text-decoration:underline"><script type="text/javascript">
 							//<![CDATA[
 							document.write(chrome.i18n.getMessage("option_autogenerate_text") + ": ");
 							//]]>

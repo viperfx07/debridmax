@@ -1,3 +1,7 @@
+v0.6.6
+------
+- Removed auto-login
+
 v0.6.5
 --------
 - Added "english" login details back

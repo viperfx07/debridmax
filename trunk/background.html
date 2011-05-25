@@ -65,43 +65,6 @@ function OnContextClick(info, tab) {
 	}
 }
 
-//Login to debridmax using username/password saved in option page
-function loginWithSavedDetails()
-{
-	$.ajax({
-		type:"POST",
-		url: chrome.i18n.getMessage("background_debridmax_url") + "login.php",
-		data: "usr_email=" + localStorage["auto-login-user"] + "&pwd=" + localStorage["auto-login-pass"] + "&remember=1&doLogin=Login",
-		cache: false,
-		async: false,
-		timeout: TIMEOUT_TIME,
-		success:function(msg){
-			isLoginOK=0;
-			if($("div.msg_log",msg).html())
-			{
-				console.log("logonwithsaved details login error");
-				alert(chrome.i18n.getMessage("background_auto_login_error"));
-				login_details.DM.user = chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
-				setBadge("x");
-			}
-			else
-			{
-				console.log("logonwithsaved details login success");
-				isLoginOK=1;
-				login_details.DM.user = $("h3",msg).html();
-				setBadge("v");
-			}
-		},
-		error:function(){
-			isLoginOK=0;
-			login_details.DM.user=chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
-			setBadge("x");
-		}
-	});
-	
-	return isLoginOK;
-}
-
 //Check DebridMax Login status
 function isLoginToDebridmax() {
 	
@@ -118,13 +81,9 @@ function isLoginToDebridmax() {
 		if(data.indexOf("document.location.href")>=0) // Not Logged in
 		{
 			console.log("not logged in");
-			//if not logged in and auto-login is enabled
-			if(localStorage["auto-login"] == 1)
-				loginWithSavedDetails();
-			else{
-				login_details.DM.user=chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
-				setBadge("x");
-			}
+			
+			login_details.DM.user=chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
+			setBadge("x");
 		}
 		else //Logged in
 		{
