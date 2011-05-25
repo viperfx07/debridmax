@@ -121,5 +121,9 @@
 	
 	"option_autogenerate_note":{
 		"message": "Note: For example, if you find an MU link (i.e megaupload.com/?d=IQJBRGVL) and you click it, it will generate the download link instead of opening the MU page"
+	},
+	
+	"option_autologin_premiumnote":{
+		"message": "Auto-login is now premium feature. For further information, please email me at viperfx07@gmail.com"
 	}
 }
