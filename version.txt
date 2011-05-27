@@ -1,3 +1,7 @@
+v0.6.6.1
+--------
+- Added uploadstation
+
 v0.6.6 [free v0.6.5]
 ------
 - Removed auto-login
