@@ -18,7 +18,8 @@ var hostFilter = new Array(
     /http:\/\/(\w+\.)?filesonic\.(com|fr|de|it|net|org)\/file\/[^\"\r\n< ]+/g,
     /http:\/\/(\w+\.)?fileserve\.com\/file\/[^\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?videobb.com\/video\/[^\"\r\n< ]+/g,
-	/http:\/\/dl\.free\.fr\/[^\"\r\n< ]+/g
+	/http:\/\/dl\.free\.fr\/[^\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?uploadstation\.com\/file\/[^\"\r\n< ]+/g
 	);
 
 function checkMultiLink(link) {
