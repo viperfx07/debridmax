@@ -5,7 +5,7 @@
 
 var _linkFounds = [];
 var selectedText = '';
-var buttonIcon = 'url(http://debridmax.com/favicon.ico)';
+var buttonIcon = 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACPklEQVR42qVSO2iaYRT1EY0ajYZIUTFBBUuyJPiCIgZRdLOBbBVRCVbpUJAOxcGhQRDpUoSCpVKlIrZQiQhugQw6OisIGQJOCuLg4Hp6v4+aRhJaaIfz893z33vuUyAQCMCg1Wqh0WiwslcQi8V3b5FQ+OC/gH0UCgWcTidsNttagF6vRz6fh9fr5XZifx/u7W0I7wt5lErod3fhcrlwdHwM5eYmnkilkJFQMBhEuVxGOp2GSCTCS6rwUiLBi50dSMjmAt+JeE/lH1ksODEYUKIMLbkcJZUKgYMDvLu4wHOPB2nia8S3KOiSgt+SmGpjA4Jn5FiTyfCVhH5Q5hzZYZ0OH7a20CD+Fdl1en+h9zcCE2D4TG0/JfAZ6OlHhBRPyNlObYTDYdgOD/FarcYnCk4RryPnj1Rpg5LEyVay7Ksh3ofP50M0GoXdbue29NdQFRTwZm8PJmrjwRbcbjfq9TpHo9FAKpWCnBzZahmXy+W4M5t+JpPhnNls/i0QiURwc3ODs7MzZLNZzOdz+P1+mEwmLBYLjMdjGI1GLjgcDrFcLvnW1gT6/f5dWcViEVdXV7DQZm5vb9FsNnF+fo5QKIRKpcIT/FEgmUxiNBrBarVygVgshna7jVKpxKv8q0ChUECv1+MVsNYMdB+TyYT7MO5RAdabw+FAIpHAdDrlmdgMBoMBv8Lr62tUq1U+h9lsti7ATrbb7XK0Wi2cnp7yievooGq1GneMx+MIBAJQ0210Oh0c0JU+egf/gP8T+Al1/60ec2qEYAAAAABJRU5ErkJggg==)';
 
 var hostFilter = new Array(
     /(http|https):\/\/(\w+\.)?rapidshare\.com\/(files\/[^\"\r\n< ]+|#!download[^\"\r\n< ]+)/g,
