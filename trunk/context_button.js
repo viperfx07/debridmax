@@ -20,7 +20,8 @@ var hostFilter = new Array(
 	/http:\/\/(\w+\.)?videobb.com\/video\/[^\"\r\n< ]+/g,
 	/http:\/\/dl\.free\.fr\/[^\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?uploadstation\.com\/file\/[^\"\r\n< ]+/g,
-	/http:\/\/(\w+\.)?duckload\.com\/(download|dl|play)\/[^\/\"\r\n< ]+/g
+	/http:\/\/(\w+\.)?duckload\.com\/(download|dl|play)\/[^\/\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?netload\.in\/[^\"\r\n< ]+/g
 	);
 
 function checkMultiLink(link) {
