@@ -1,3 +1,8 @@
+v0.6.6.5
+--------
+- Added wupload
+- Added proposed fix for "undefined" problem when generating the link.
+
 v0.6.6.4
 --------
 - Fixed compatibility with the recent change made (translate button, www.debridmax.com/en/ deleted).

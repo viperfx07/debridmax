@@ -21,7 +21,8 @@ var hostFilter = new Array(
 	/http:\/\/dl\.free\.fr\/[^\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?uploadstation\.com\/file\/[^\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?duckload\.com\/(download|dl|play)\/[^\/\"\r\n< ]+/g,
-	/http:\/\/(\w+\.)?netload\.in\/[^\"\r\n< ]+/g
+	/http:\/\/(\w+\.)?netload\.in\/[^\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?wupload\.com\/file\/[^\"\r\n< ]+/g
 	);
 
 function checkMultiLink(link) {

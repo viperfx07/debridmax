@@ -140,7 +140,7 @@ function generateBy(theURL,linksControlValue) {
 		var the_links = value[0].split("\n");
 		
 		localStorage["totallinks"]=0;
-		
+		localStorage["linksarray"] = localStorage["textInLink"] = '';
 		for(var i=0; i<the_links.length; i++)
 		{
 			postdata = "hotlink="+encodeURIComponent(the_links[i])+"&pass="+encodeURIComponent(value[1])+"&t=2e";
