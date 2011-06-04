@@ -2,6 +2,7 @@ v0.6.6.5
 --------
 - Added wupload
 - Added proposed fix for "undefined" problem when generating the link.
+- Fixed problem when generating if there's a redundant space (line 146 background.html) 
 
 v0.6.6.4
 --------
