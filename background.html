@@ -143,7 +143,7 @@ function generateBy(theURL,linksControlValue) {
 		localStorage["linksarray"] = localStorage["textInLink"] = '';
 		for(var i=0; i<the_links.length; i++)
 		{
-			postdata = "hotlink="+encodeURIComponent(the_links[i])+"&pass="+encodeURIComponent(value[1])+"&t=2e";
+			postdata = "hotlink="+encodeURIComponent($.trim(the_links[i]))+"&pass="+encodeURIComponent(value[1])+"&t=2e";
 			
 			$.ajax({
 			type:"POST",
@@ -161,6 +161,7 @@ function generateBy(theURL,linksControlValue) {
 				)
 				{
 					localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + ',';
+					console.log(localStorage["linksarray"]);
 					localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + ',';
 					localStorage["totallinks"]++;
 				}
