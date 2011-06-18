@@ -64,7 +64,7 @@
 	},
 	
 	"background_verify_message":{
-		"message": "Raisons possible : \n1. Le lien / mot de passe est invalide.\n2. Le service de debridage est en panne.\n3. Nos comptes premium sont hors service.\n4. Auto-connextion nom pseudo ou mot de passe sont incorrects"
+		"message": "Raisons possible : \n1. Le lien / mot de passe est invalide.\n2. Le service de debridage est en panne.\n3. Nos comptes premium sont hors service.\n4. Serveur en surcharge."
 	},
 	
 	"background_auto_login_error":{
@@ -124,6 +124,6 @@
 	},
 	
 	"option_autologin_premiumnote":{
-		"message": "Auto-connexion est maintenant fonctionnalité prime. Pour de plus amples renseignements, s'il vous plaît écrivez-moi à viperfx07@gmail.com"
+		"message": "Pour obtenir la connexion automatique fonction, s'il vous plaît faire un don via Paypal en cliquant ce <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SNRGMLXNNBVFJ'>ici</a>"
 	}
 }
