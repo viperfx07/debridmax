@@ -155,9 +155,9 @@ function generateBy(theURL,linksControlValue) {
 			success:function(msg)
 			{
 				console.log("success POST links to multimax");
-				if(	msg.indexOf("<b>Lien mort</b>")<0 && 
-					msg.indexOf("<b>Vous devez passer en premium pour utiliser depositfiles...</b>")<0 &&
-					msg.indexOf("<b>Serveur en surcharge, retester votre lien plus tard... Merci</b>")<0
+				if(	msg.indexOf("<b>Lien")<0 && 
+					msg.indexOf("<b>Vous")<0 &&
+					msg.indexOf("<b>Serveur")<0
 				)
 				{
 					localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + ',';

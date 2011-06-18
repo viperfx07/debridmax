@@ -53,6 +53,12 @@
 				
 		});
 		
+		$("#clearlinks").click(function(){
+			$("#link").val("");
+			localStorage["subwin_links"] = "";
+			countLinks();
+		});
+		
 		showCachedLinks();
 		countLinks();
 		
@@ -101,7 +107,9 @@
 		<span id="line_counter">0 link(s)</span><br/>
 		<span id="pass_note"></span><input id="pass" type="text" name="pass" />
 		<br />
-		<center><input type="button" id="generate" value="GO"/></center>
+		<center><input type="button" id="generate" value="GO"/>
+		<input type="button" id="clearlinks" value="Clear Links"/>
+		</center>
 		
 	</div>
 </body>
