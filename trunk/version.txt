@@ -1,5 +1,9 @@
+v0.6.6.7
+-----------
+- Fixed the null/premium link generateBy function
+
 v0.6.6.6
---------
+----------
 - Fixed VIP/undefined problem (due to server's overloading)
 - Changed auto-login premium note
 

@@ -154,17 +154,22 @@ function generateBy(theURL,linksControlValue) {
 			data: postdata,
 			success:function(msg)
 			{
-				console.log("success POST links to multimax");
-				if(	msg.indexOf("<b>Lien")<0 && 
-					msg.indexOf("<b>Vous")<0 &&
-					msg.indexOf("<b>Serveur")<0
-				)
-				{
-					localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + ',';
-					console.log(localStorage["linksarray"]);
-					localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + ',';
-					localStorage["totallinks"]++;
-				}
+				console.log(msg);
+				if(msg.indexOf('document.location.href="../login.php"')>=0)
+					msg = '<span><a href="http://www.debridmax.com/login.php">Please login before using this extension</a></span>';
+				else if(msg.indexOf("<b>lien")>=0)
+					msg = '<span><a href="#">The link is invalid</a></span>';
+				else if(msg.indexOf("<b>Serveur")>=0)
+					msg = '<span><a href="http://www.debridmax.com/premium.php">The server is overload. Buy premium to avoid this.</a></span>';
+				else if(msg.indexOf("<b>Vous")>=0)
+					msg = '<span><a href="#">Buy premium to use this feature.</a></span>';
+				else if(msg.indexOf("</font>")>=0)
+					msg = '<span><a href="#">Unknown error. Please send the link(s) you tried to download to viperfx07@gmail.com</a></span>';
+				
+				
+				localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + ',';
+				localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + ',';
+				localStorage["totallinks"]++;
 			},
 			
 			error: function(msg){
