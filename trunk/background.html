@@ -13,11 +13,7 @@ function init(callback) {
 	
 	dmStatus = isLoginToDebridmax(callback);
 	
-	badgeText = "";
-	if(dmStatus > 0)
-		badgeText = 'v';
-	else
-		badgeText = 'x';
+	badgeText = '...';
 	
 	setBadge(badgeText);
 	localStorage["subwin_links"]="";
