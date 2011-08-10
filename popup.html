@@ -40,23 +40,28 @@
 	   
 		//Initiate refresh button for login/server details
 		var notloggedin_text = chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
+		$("img#loader").attr('src', chrome.extension.getURL('/load.gif'));
 		
-		bg.init();
-					
-		if(bg.login_details.DM.user == notloggedin_text || bg.login_details.DM.user =="")
-			$("#subWindow").hide();
-		else
-			$("#subWindow").show();
+		bg.init(function(){
 		
-		//Write login, credit, and server load;
-		setDetails();
-		
-		//Add root server url prior to the img src 
-		$("img").each(function(){
-			$(this).attr({src:DM_ROOT + $(this).attr('src')});
+			if(bg.login_details.DM.user == notloggedin_text || bg.login_details.DM.user =="")
+				$("#subWindow").hide();
+			else
+				$("#subWindow").show();
+			
+			//Write login, credit, and server load;
+			setDetails();
+			
+			//Add root server url prior to the img src 
+			$("img").each(function(){
+				$(this).attr({src:DM_ROOT + $(this).attr('src')});
+			});
+			
+			$("#subWindow").text(chrome.i18n.getMessage("popup_downloader_text"));
+			$(".loader").hide();
 		});
+					
 		
-		$("#subWindow").text(chrome.i18n.getMessage("popup_downloader_text"));
 		
 	});
 	//]]>
@@ -85,6 +90,9 @@
 </head>
 
 <body>
+	<div class="loader">
+		<img id="loader" alt="loader" /> Loading your login details... 
+	</div>
 	<div class="container">
 		<div id="logindetails" style="display:inline;">
 			<div id="dm_details"></div>
