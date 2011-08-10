@@ -5,13 +5,13 @@
 
 <script>
 //First thing to do
-function init() {
+function init(callback) {
 	//BEGIN Preparing to set status
 	login_details = {
 	'DM' : {'user':'','premium_accs':''}
 	};
 	
-	dmStatus = isLoginToDebridmax();
+	dmStatus = isLoginToDebridmax(callback);
 	
 	badgeText = "";
 	if(dmStatus > 0)
@@ -22,10 +22,6 @@ function init() {
 	setBadge(badgeText);
 	localStorage["subwin_links"]="";
 	localStorage["badge"] = badgeText;
-	
-	//END Preparing to set status
-	
-	return dmStatus;
 }
 
 function createContextMenu() {
@@ -66,22 +62,20 @@ function OnContextClick(info, tab) {
 }
 
 //Check DebridMax Login status
-function isLoginToDebridmax() {
+function isLoginToDebridmax(callback) {
 	
 	setBadge("...");
 	console.log("check login status");
 	$.ajax({
   	type:"GET",
-	url: chrome.i18n.getMessage("background_debridmax_url") + "multimax/",
+	url: MD_DM,
 	cache: false,
-	async: false,
 	timeout: TIMEOUT_TIME,
 	success:function(data, request, status){
 		isLoginOK = 0;
 		if(data.indexOf("document.location.href")>=0) // Not Logged in
 		{
 			console.log("not logged in");
-			
 			login_details.DM.user=chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
 			setBadge("x");
 		}
@@ -92,16 +86,16 @@ function isLoginToDebridmax() {
 			login_details.DM.user = $("h3",data).html();
 			setBadge("v");
 		} 
-	
+		callback(isLoginOK);
+		
 	},
 	error:function(data){
 		isLoginOK=0;
 		login_details.DM.user=chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
 		setBadge("x");
+		callback(isLoginOK);
 	}
 	});
-	
-	return isLoginOK;
 }
 
 //Set badge color and text
@@ -126,73 +120,74 @@ function openNewWindow(url)
 
 //Generate premium download links
 function generateBy(theURL,linksControlValue) {
-	
-	if(isLoginToDebridmax()==1)
-	{
-		console.log("logged in and ready to download");
-		setBadge("...");
-		postdata="";
-		err="";
-		totallinks=0;
-		linksControlValue = $.trim(linksControlValue);
-		
-		var value = linksControlValue.split("&");
-		var the_links = value[0].split("\n");
-		
-		localStorage["totallinks"]=0;
-		localStorage["linksarray"] = localStorage["textInLink"] = '';
-		for(var i=0; i<the_links.length; i++)
+
+	isLoginToDebridmax(function(isLoginOK){
+		if(isLoginOK==1)
 		{
-			postdata = "hotlink="+encodeURIComponent($.trim(the_links[i]))+"&pass="+encodeURIComponent(value[1])+"&t=2e";
+			console.log("logged in and ready to download");
+			setBadge("...");
+			var postdata="";
 			
-			$.ajax({
-			type:"POST",
-			timeout: TIMEOUT_TIME,
-			async:false,
-			cache:false,
-			url: MD_DM + "p.php",
-			data: postdata,
-			success:function(msg)
+			totallinks=0;
+			linksControlValue = $.trim(linksControlValue);
+			
+			var value = linksControlValue.split("&");
+			var the_links = value[0].split("\n");
+			
+			localStorage["totallinks"]=0;
+			localStorage["linksarray"] = localStorage["textInLink"] = '';
+			for(var i=0; i<the_links.length; i++)
 			{
-				console.log(msg);
-				if(msg.indexOf('document.location.href="../login.php"')>=0)
-					msg = '<span><a href="http://www.debridmax.com/login.php">Please login before using this extension</a></span>';
-				else if(msg.indexOf("<b>lien")>=0)
-					msg = '<span><a href="#">The link is invalid</a></span>';
-				else if(msg.indexOf("<b>Serveur")>=0)
-					msg = '<span><a href="http://www.debridmax.com/premium.php">The server is overload. Buy premium to avoid this.</a></span>';
-				else if(msg.indexOf("<b>Vous")>=0)
-					msg = '<span><a href="#">Buy premium to use this feature.</a></span>';
-				else if(msg.indexOf("</font>")>=0)
-					msg = '<span><a href="#">Unknown error. Please send the link(s) you tried to download to viperfx07@gmail.com</a></span>';
+				postdata = "hotlink="+encodeURIComponent($.trim(the_links[i]))+"&pass="+encodeURIComponent(value[1])+"&t=2e";
 				
+				$.ajax({
+				type:"POST",
+				timeout: TIMEOUT_TIME,
+				cache:false,
+				url: MD_DM + "p.php",
+				data: postdata,
+				success:function(msg)
+				{
+					console.log(msg);
+					if(msg.indexOf('document.location.href="../login.php"')>=0)
+						msg = '<span><a href="http://www.debridmax.com/login.php">Please login before using this extension</a></span>';
+					else if(msg.indexOf("<b>lien")>=0)
+						msg = '<span><a href="#">The link is invalid</a></span>';
+					else if(msg.indexOf("<b>Serveur")>=0)
+						msg = '<span><a href="http://www.debridmax.com/premium.php">The server is overload. Buy premium to avoid this.</a></span>';
+					else if(msg.indexOf("<b>Vous")>=0)
+						msg = '<span><a href="#">Buy premium to use this feature.</a></span>';
+					else if(msg.indexOf("</font>")>=0)
+						msg = '<span><a href="#">' + $("b",msg).html() + '</a></span>';
+									
+					localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + '|||';
+					localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + '|||';
+					localStorage["totallinks"]++;
+					
+					
+					if(localStorage["totallinks"]==the_links.length)
+					{
+						if(localStorage["totallinks"]>0) //if no links generated
+							openNewWindow("generated_link.html");
+						else
+							alert("Debridmax: Error. " + chrome.i18n.getMessage("background_verify_message"));
+						
+						setBadge('v');
+					}
+				},
 				
-				localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + ',';
-				localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + ',';
-				localStorage["totallinks"]++;
-			},
-			
-			error: function(msg){
-				alert("DebridMax: Timeout. " + chrome.i18n.getMessage("background_verify_message"));
-				setBadge('v');
+				error: function(msg){
+					alert("DebridMax: Timeout. " + chrome.i18n.getMessage("background_verify_message"));
+					setBadge('v');
+				}
+				});
 			}
-			});
 		}
-		
-		if(localStorage["totallinks"]>0) //if no links generated
-			openNewWindow("generated_link.html");
 		else
-			alert("Debridmax: Error. " + chrome.i18n.getMessage("background_verify_message"));
-		
-		setBadge('v');
+			alert(chrome.i18n.getMessage("background_notloggedin"));
 	
-	}
-	else
-	{
-		alert(chrome.i18n.getMessage("background_notloggedin"));
-	}	
-	return;
-  }
+	});
+}
 
 function copyToClipboard(str)
 {
