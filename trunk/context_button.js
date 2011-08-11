@@ -22,7 +22,10 @@ var hostFilter = new Array(
 	/http:\/\/(\w+\.)?uploadstation\.com\/file\/[^\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?duckload\.com\/(download|dl|play)\/[^\/\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?netload\.in\/[^\"\r\n< ]+/g,
-	/http:\/\/(\w+\.)?wupload\.com\/file\/[^\"\r\n< ]+/g
+	/http:\/\/(\w+\.)?wupload\.com\/file\/[^\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?4shared\.com\/[a-z]+\/[^( |"|>|<|\r\n\|\n|$)]+/g,
+	/http:\/\/(\w+\.)?filefactory\.com\/file\/[0-9a-zA-Z]+\//g,
+	/http:\/\/(\w+\.)?oron\.com\/[0-9a-zA-Z]+\//g
 	);
 
 function checkMultiLink(link) {
@@ -70,8 +73,7 @@ var ContextButton = function()
 			function(e)
 			{
 				thelinks = ((_linkFounds.toString()).split(",")).join("\n");
-				chrome.extension.sendRequest({'requestType' : 'dl', 'the_host': setHost(_linkFounds[0]), 'the_links' : thelinks
-				});
+				chrome.extension.sendRequest({'requestType' : 'dl', 'the_host': setHost(_linkFounds[0]), 'the_links' : thelinks	});
                 e.stopPropagation();
 			},
 			false);

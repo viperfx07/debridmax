@@ -4,11 +4,11 @@
 	},
 	
 	"submissionWindows_title": {
-		"message": "Lien(s) RS/MU/MV/HF/FS/UL/FN/DF/VBB/UD (un lien par ligne, 8 liens maximum):"
+		"message": "Entrez votre liens ci-dessous:"
 	},
 
 	"submissionWindows_note": {
-		"message": "Note: RS - 10 liens max. VideoBB - 1 lien max"
+		"message": "Note:Entrez lien Filesonic (s) avec www devant filesonic.com"
 	},
 
 	"submissionWindow_mu_password": {
@@ -79,8 +79,8 @@
 		"message": "Lien(s) copier"
 	},
 	
-	"background_debridmax_url":{
-		"message": "http://www.debridmax.com/"
+	"background_countrycode":{
+		"message": "fr"
 	},
 		
 	"content_download_all":{
@@ -124,6 +124,6 @@
 	},
 	
 	"option_autologin_premiumnote":{
-		"message": "Pour obtenir la connexion automatique fonction, s'il vous plaît faire un don via Paypal en cliquant ce <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SNRGMLXNNBVFJ'>ici</a>"
+		"message": "Pour obtenir la connexion automatique fonction, s'il vous plaît faire un don via Paypal en cliquant ce <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SNRGMLXNNBVFJ'>ici</a> et envoyez un email à viperfx07@gmail.com tard."
 	}
 }

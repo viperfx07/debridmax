@@ -13,7 +13,7 @@
 			
 	//Open login page in new tab
 	function goToDebridMax(){
-		chrome.tabs.create({url:chrome.i18n.getMessage("background_debridmax_url")});
+		chrome.tabs.create({url:DM_ROOT + '?lang=' + chrome.i18n.getMessage("background_countrycode")});
 	}
 	
 	function showCachedLinks(){
@@ -36,7 +36,7 @@
 	   
 		$("#link").keyup(countLinks);
 		$("#link").focus(countLinks);
-		
+		$("img#loader").attr('src', chrome.extension.getURL('/load.gif'));
 		//Draw generate/GO buttons
 		$("#generate").click(function(){
 			
@@ -48,9 +48,13 @@
 				links = links + "&" + $("#pass").val();
 			else
 				links = links + "&" + "";
-		
-			chrome.extension.sendRequest({requestType:"dl", the_links:links, the_host:setHost((links.split("\n"))[0])});	
-				
+			
+			$("img#loader").show();
+			chrome.extension.sendRequest({requestType:"dl", the_links:links, the_host:setHost((links.split("\n"))[0])},function(){
+				$("img#loader").hide();
+			});	
+			
+			
 		});
 		
 		$("#clearlinks").click(function(){
@@ -109,6 +113,7 @@
 		<br />
 		<center><input type="button" id="generate" value="GO"/>
 		<input type="button" id="clearlinks" value="Clear Links"/>
+		<img id="loader" src="" style="display:none" alt="loader" />
 		</center>
 		
 	</div>

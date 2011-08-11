@@ -1,11 +1,12 @@
-v0.6.7
------------
-- Removed all the synchronous requests
-- Changed error msg line 167 background.html
+v0.7
+-------
+- Removed all the synchronous requests (no more hang when downloading many files)
 - Changed delimiter on background.html and generated_link.html from comma to |||
 - Got rid of DM from login_details array variable
 - More concise login details on popup.html
-- Set login default to english (login.php?lang=en)
+- Error message based on localization
+- Added oron, 4shared, filefactory filter on context_button.js
+- Added loader on submission_window.html
 
 v0.6.6.7
 -----------
