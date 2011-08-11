@@ -22,9 +22,19 @@
 	}
 
 	//Set login, credit, and server load html;
-	function setDetails() {
-		$("#dm_details").html(bg.login_details.DM.user);
-		
+	function setDetails(isLoggedIn) {
+	
+	if(isLoggedIn)
+	{
+		$("#user").text("Welcome, " + bg.login_details.user);
+		$("#type").text("Account Type: " + bg.login_details.type);
+		$("#point").text("Reward Point: " + bg.login_details.point.replace(/&nbsp;/g,''));
+		$(".login_details").show();
+	}
+	else
+	{
+		$("#dm_details").html(bg.login_details.user);
+	}
 		/* Server stats */
 		/*
 		$("#premium_account_stats").load("http://www.debridmax.com div#useful-links table",function(){ 
@@ -39,18 +49,18 @@
 	$(document).ready(function(){
 	   
 		//Initiate refresh button for login/server details
-		var notloggedin_text = chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
+		var notloggedin_text = chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + chrome.i18n.getMessage("background_debridmax_url") + "login.php?lang=en" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
 		$("img#loader").attr('src', chrome.extension.getURL('/load.gif'));
 		
-		bg.init(function(){
-		
-			if(bg.login_details.DM.user == notloggedin_text || bg.login_details.DM.user =="")
-				$("#subWindow").hide();
-			else
+		bg.init(function(isLoggedIn){
+			$(".login_details").hide();
+			if(isLoggedIn)
 				$("#subWindow").show();
+			else
+				$("#subWindow").hide();
 			
 			//Write login, credit, and server load;
-			setDetails();
+			setDetails(isLoggedIn);
 			
 			//Add root server url prior to the img src 
 			$("img").each(function(){
@@ -60,9 +70,6 @@
 			$("#subWindow").text(chrome.i18n.getMessage("popup_downloader_text"));
 			$(".loader").hide();
 		});
-					
-		
-		
 	});
 	//]]>
 	</script>
@@ -72,13 +79,13 @@
 		background: #000;
 		margin: 0;
 		padding: 0;
-		font: 12px normal Verdana, Arial, Helvetica, sans-serif;
+		font: 12px normal "Trebuchet MS", Arial, Helvetica, sans-serif;
 		color: #fff;
 		min-width:100px;
 		overflow-x:hidden;
 	}
 
-	.container {width: 200px; margin: 10px auto;}
+	.container {width: 200px; margin: 10px;}
 	
 	a {
 	color : #ff0000;
@@ -86,6 +93,7 @@
 	a:hover {
 	text-decoration : none;
 	}
+	
 	</style>
 </head>
 
@@ -95,7 +103,11 @@
 	</div>
 	<div class="container">
 		<div id="logindetails" style="display:inline;">
-			<div id="dm_details"></div>
+			<div id="dm_details">
+				<p class="login_details" id="user"></p>
+				<p class="login_details" id="type"></p>
+				<p class="login_details" id="point"></p>
+			</div>
 			<a href="javascript:openSubWindow();" id="subWindow"></a>
 		</div>
 	</div>
