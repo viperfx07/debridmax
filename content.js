@@ -20,7 +20,10 @@ var hostFilter = new Array(
 	/http:\/\/(\w+\.)?uploadstation\.com\/file\/[^\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?duckload\.com\/(download|dl|play)\/[^\/\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?netload\.in\/[^\"\r\n< ]+/g,
-	/http:\/\/(\w+\.)?wupload\.com\/file\/[^\"\r\n< ]+/g
+	/http:\/\/(\w+\.)?wupload\.com\/file\/[^\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?4shared\.com\/[a-z]+\/[^( |"|>|<|\r\n\|\n|$)]+/g,
+	/http:\/\/(\w+\.)?filefactory\.com\/file\/[0-9a-zA-Z]+\//g,
+	/http:\/\/(\w+\.)?oron\.com\/[0-9a-zA-Z]+\//g
 	);
 
 //Draw buttons near the code tag
