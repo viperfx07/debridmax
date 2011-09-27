@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>DebridMax Chrome Extension: Popup</title>
 	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="const.js"></script>
+	<script type="text/javascript" src="content_script.js"></script>
 	<script type="text/javascript">
 	//<![CDATA[
 	var myWindow;
@@ -21,7 +21,6 @@
 		$.get(DM_ROOT + "index.php?lang=en",function(){
 			chrome.tabs.create({url:host});
 		});
-		
 	}
 
 	//Set login, credit, and server load html;
@@ -37,18 +36,7 @@
 		$(".login_details").show();
 	}
 	else
-	{
 		$("#dm_details").html(bg.login_details.user);
-	}
-		/* Server stats */
-		/*
-		$("#premium_account_stats").load("http://www.debridmax.com div#useful-links table",function(){ 
-			//replace dt.host_p css's background-url with DM_ROOT instead of the extension's URL
-			$("dt.host_p").each(function(){
-				$(this).css("background",$(this).css("background").replace("chrome-extension://opoiifdgfgecnammngihaedbgcajohbl/",DM_ROOT));
-			});
-		});
-		*/
 	}
 
 	$(document).ready(function(){
@@ -90,7 +78,7 @@
 		overflow-x:hidden;
 	}
 
-	.container {width: 200px; margin: 10px;}
+	.container {width: 200px; margin: 10px auto;}
 	
 	a {
 	color : #ff0000;

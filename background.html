@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
 <script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="content.js"></script>
+<script type="text/javascript" src="content_script.js"></script>
 
 <script>
 //First thing to do
@@ -13,11 +13,9 @@ function init(callback) {
 		callback(isLoggedIn);
 	});
 	
-	badgeText = '...';
-	
-	setBadge(badgeText);
+	setBadge('...');
 	localStorage["subwin_links"]="";
-	localStorage["badge"] = badgeText;
+	localStorage["badge"] = '...';
 }
 
 function createContextMenu() {
@@ -30,19 +28,27 @@ function createContextMenu() {
 
 //context menu onclick function
 function OnContextClick(info, tab) {
-	var thelinks;
-	
+	var thelinks ="";
 	if(info.selectionText==null)
 		thelinks = info.linkUrl;
 	else
-		thelinks = info.selectionText;
+	{
+		var temp = (info.selectionText).split("\n");
+		for(var i=0; i<temp.length; i++)
+		{
+			if(filterTheLink(temp[i])>=0 && (temp[i]).length>0)
+			{
+				var thelink  = (temp[i]).trim();				
+				thelinks += (i==temp.length-1) ? (thelink) : (thelink + "\n");
+			}
+		}
+	}
 	
-	if(info.menuItemId == 2) //Download
-		generateBy(setHost(thelinks),thelinks);
+	if(info.menuItemId == (info.parentMenuItemId+1)) //Download
+		generateBy(thelinks);
 	else{ //Send to subwin
 		localStorage["subwin_links"] += thelinks + "\r\n";
 		
-		//Look through all the pages in this extension to find one we can use.
 		var views = chrome.extension.getViews();
 		var viewTabUrl = chrome.extension.getURL("submissionWindow.html");
 		openNewWindow("submissionWindow.html");
@@ -124,7 +130,7 @@ function openNewWindow(url)
 }
 
 //Generate premium download links
-function generateBy(theURL,linksControlValue,callback) {
+function generateBy(linksControlValue,callback) {
 
 	isLoginToDebridmax(function(isLoggedIn){
 		if(isLoggedIn)
@@ -175,17 +181,15 @@ function generateBy(theURL,linksControlValue,callback) {
 						
 						setBadge('v');
 					}
-					callback('generate_finished');
-					
 				},
 				
 				error: function(msg){
 					alert("DebridMax: Timeout. " + chrome.i18n.getMessage("background_verify_message"));
 					setBadge('v');
-					callback();
 				}
 				});
 			}
+			callback();
 		}
 		else
 		{
@@ -200,9 +204,10 @@ function copyToClipboard(str)
 	var obj = document.getElementById("temp");
 	if(obj)
 	{
-		obj.value = str;
+		obj.innerText = str;
+		obj.focus();
 		obj.select();
-		document.execCommand("copy",false,null);
+		document.execCommand("copy");
 		alert(chrome.i18n.getMessage("background_links_copied"));
 	}
 }
@@ -229,10 +234,9 @@ chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if(request.requestType == "dl")
 	{
-		generateBy(request.the_host,request.the_links,function(msg){
-			sendResponse(msg);
+		generateBy(request.the_links,function(){
+			sendResponse({});
 		});
-		
 	}
 	else if(request.requestType == "cp")
 	{
@@ -247,6 +251,16 @@ chrome.extension.onRequest.addListener(
 	{
 		sendResponse({isLogin: isLoginToDebridmax()});
 	}
+	else if(request.requestType == "createContextMenu")
+	{
+		createContextMenu();
+	}	
+	else if(request.requestType == "deleteContextMenu")
+	{
+		chrome.contextMenus.removeAll();
+	}
+	else
+		sendResponse({});
 }); 
 </script>
 </head>
@@ -255,6 +269,6 @@ chrome.extension.onRequest.addListener(
 	init(function(){void(0);});
 	createContextMenu();
 </script>
-<input id="temp" value="" /> 
+<textarea id="temp"></textarea>
 </body>
 </html>

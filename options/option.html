@@ -13,8 +13,7 @@ Modified by: viperfx07
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
 	<link rel="stylesheet" href="style.css" type="text/css"/>
     <script src="../jquery.js" type="text/javascript"></script>
-	<script src="../const.js" type="text/javascript"></script>
-    <script type="text/javascript">
+	<script type="text/javascript">
 	
 	  // When the document loads do everything inside here ...
 	  $(document).ready(function(){
@@ -54,8 +53,6 @@ Modified by: viperfx07
 					
 		});
 		//--end set auto generate
-		
-		$("a#web").attr('href',DM_ROOT + '?lang=' + chrome.i18n.getMessage("background_countrycode"));
 		
 		$.getJSON('../manifest.json', function(json) {
 			$("#version").html(json.version);
@@ -111,13 +108,7 @@ Modified by: viperfx07
 						<b>Coded by :</b><br />
 						<a href="" style="text-decoration:none;">viperfx07</a><br />
 						<b>Website :</b><br />
-						<a id="web" href="http://www.debridmax.com/" style="text-decoration:none;" >
-						<script type="text/javascript">
-						//<![CDATA[
-							document.write(DM_ROOT);
-						//]]>
-						</script>
-						</a>
+						<a id="web" href="http://www.debridmax.com/" style="text-decoration:none;" >http://www.debridmax.com</a>
 					</center>
 					<br />
 				</div>
