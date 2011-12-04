@@ -251,14 +251,6 @@ chrome.extension.onRequest.addListener(
 	{
 		sendResponse({isLogin: isLoginToDebridmax()});
 	}
-	else if(request.requestType == "createContextMenu")
-	{
-		createContextMenu();
-	}	
-	else if(request.requestType == "deleteContextMenu")
-	{
-		chrome.contextMenus.removeAll();
-	}
 	else
 		sendResponse({});
 }); 

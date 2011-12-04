@@ -19,5 +19,5 @@
    "name": "DebridMax",
    "permissions": [ "tabs", "http://*/*", "https://*/*", "contextMenus" ],
    "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "0.7.1"
+   "version": "0.7.2"
 }
