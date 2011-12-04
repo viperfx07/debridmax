@@ -32,7 +32,13 @@ var hostFilter = new Array(
 	/http:\/\/(\w+\.)?oron\.com\/[^\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?megashares\.com\/(dl\/[0-9a-zA-Z]+\/[^( |"|>|<|\r\n\|\n|$)]+|[0-9a-zA-Z?\/=]+)/g,   
 	/http:\/\/(\w+\.)?transitfiles.com\/dl\/[0-9a-zA-Z]{8}/g,
-	/http:\/\/(\w+\.)?bitshare\.com\/(files\/[^( |"|>|<|\r\n\|\n|$)]+|\?f=[^( |"|>|<|\r\n\|\n|$)]+)/g
+	/http:\/\/(\w+\.)?bitshare\.com\/(files\/[^( |"|>|<|\r\n\|\n|$)]+|\?f=[^( |"|>|<|\r\n\|\n|$)]+)/g,
+	/http:\/\/(\w+\.)?(easy-share|crocko)\.com\/[0-9]{10}\//g,
+	/http:\/\/(\w+\.)?uploadbox\.com\/([a-zA-Z]+\/)?files\/[0-9a-z]+[^( |"|>|<|\r\n\|\n|$)]+/g,
+	/http:\/\/(www\.)?purevid\.com\/v\/[^( |"|>|<|\r\n\|\n|$)]+/g,
+	/http:\/\/(www\.)?(uploadhere|uploadking)\.com\/[^( |"|>|<|\r\n\|\n|$)]+/g	,
+	/http:\/\/(\w+\.)?freakshare\.(net|com)\/files\/[0-9a-zA-Z]+\/[^( |"|>|<|\r\n\|\n|$)]+/g,
+	/http:\/\/(www\.)?uptobox\.com\/[^( |"|>|<|\r\n\|\n|$)]+/g
 	);
 
 function checkMultiLink(link) {
@@ -46,8 +52,7 @@ function checkMultiLink(link) {
     }
 	return (result.length) ? result : 0;
 }
-	
-	
+
 var ContextButton = function()
 {
 	this._button;
@@ -181,30 +186,17 @@ document.addEventListener('mouseup',
 	false);
 
 document.addEventListener('mousedown',
-	function(e)
-	{
-		var condition;
-		var selected = viewPartialSourceForSelection();
-		
-		if (btn.isActive)
-		{
-			btn.close();
-		}
-		mouseStatus.pressed = true;
-		mouseStatus.pressedEventArgs = e;
-		mouseStatus.pressedAndMoved = false;
-		
-		if(!selected && typeof(e.srcElement.href) !== "undefined")
-			condition = checkMultiLink(e.srcElement.href);
-		else
-			condition = checkMultiLink(selected);
-		
-		if(!condition)
-			chrome.extension.sendRequest({requestType: "deleteContextMenu"});
-		else
-			chrome.extension.sendRequest({requestType: "createContextMenu"});
-	},
-	false);
+        function(e)
+        {
+                if (btn.isActive)
+                {
+                        btn.close();
+                }
+                mouseStatus.pressed = true;
+                mouseStatus.pressedEventArgs = e;
+                mouseStatus.pressedAndMoved = false;
+        },
+        false);
 
 document.addEventListener('dblclick',
 	function(e)
@@ -365,3 +357,4 @@ $('.downloadAll').click(
 		chrome.extension.sendRequest({requestType:"dl", the_links:thelinks});
 	
 });
+
