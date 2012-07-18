@@ -3,8 +3,9 @@
 * Modified by: viperfx07
 */
 
-const DM_ROOT = 'http://www.debridmax.com/';
-const MD_DM = 'http://www.debridmax.com/multimax/';
+const SITENAME =  "Multi Debrid";
+const DM_ROOT = 'http://www.multi-debrid.com/';
+const MD_DM = 'http://www.multi-debrid.com/downloader/';
 const TIMEOUT_TIME = 30000;
 
 var _linkFounds = [];
