@@ -12,7 +12,7 @@
 	},
 
 	"submissionWindow_mu_password": {
-		"message": "MU/MV le mot de passe (facultatif):"
+		"message": "Mot de passe du/des fichier(s) (facultatif):"
 	},
 	
 	"submissionWindow_linkcount": {
@@ -52,7 +52,7 @@
 	},
 	
 	"background_notloggedin": {
-		"message": "Note : Vous n''êtes pas connecté à debridmax. Connectez-vous à debridmax avant d'utiliser."
+		"message": "Note : Vous n''êtes pas connecté à MultiDebrid. Connectez-vous à MultiDebrid avant d'utiliser."
 	},
 		
 	"background_login_link": {
@@ -100,7 +100,7 @@
 	},
 	
 	"manifest_description":{
-		"message": "Télécharger RS, MU, HF, FS, FN, DF, UL, VBB, et beaucoup d'autres facilement par l'intermédiaire de DebridMax. GRATUIT !!! S'il vous plaît taux de don et de cette extension à l'appui Debridmax"
+		"message": "Télécharger RS, MU, HF, FS, FN, DF, UL, VBB, et beaucoup d'autres facilement par l'intermédiaire de MultiDebrid. GRATUIT !!! S'il vous plaît taux de don et de cette extension à l'appui MultiDebrid"
 	},
 	
 	"option_autogenerate_text":{

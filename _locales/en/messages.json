@@ -12,7 +12,7 @@
 	},
 
 	"submissionWindow_mu_password": {
-		"message": "MU/MV file password (optional):"
+		"message": "Password (optional):"
 	},
    
    "submissionWindow_linkcount": {
@@ -52,7 +52,7 @@
 	},
 	
 	"background_notloggedin": {
-		"message": "Note: You are not currently logged in to Debridmax. Please login before using the tool."
+		"message": "Note: You are not currently logged in to MultiDebrid. Please login before using the tool."
 	},
 	
 	"background_login_link": {
@@ -100,7 +100,7 @@
 	},
 	
 	"manifest_description":{
-		"message": "Free download premium RS, MU, HF, FS, FN, DF, UL, VBB, and many others easily via DebridMax. FREE !!! Please rate and donate this extension to support Debridmax"
+		"message": "Free download premium RS, MU, HF, FS, FN, DF, UL, VBB, and many others easily via MultiDebrid. FREE !!! Please rate and donate this extension to support MultiDebrid"
 	},
 	
 	"option_autogenerate_text":{ 

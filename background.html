@@ -76,7 +76,7 @@ function isLoginToDebridmax(callback) {
 	success:function(data, request, status){
 		var isLoggedIn = false;
 		var temp = [];
-		if(data.indexOf("document.location.href")>=0) // Not Logged in
+		if(($("div.alert.alert-info b, div.alert.alert-info strong",data)).length<=0) // Not Logged in
 		{
 			console.log("not logged in");
 			login_details.user=chrome.i18n.getMessage("background_notloggedin") + '(<a href=javascript:openLoginForm("' + DM_ROOT + "login.php" + '")>'+chrome.i18n.getMessage("background_login_link")+'</a>).';
@@ -87,14 +87,10 @@ function isLoginToDebridmax(callback) {
 			console.log("logged in");
 			isLoggedIn=true;
 			
-			console.log(data);
-			
 			$("div.alert.alert-info b, div.alert.alert-info strong",data).each(function(){
 				console.log('test: ' + $(this).html());
 				temp.push($(this).html());
 			});	
-			
-			
 			
 			login_details.user = temp[0];
 			login_details.type = temp[1];
