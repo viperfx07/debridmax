@@ -21,7 +21,7 @@ function init(callback) {
 function createContextMenu() {
 	// Create context menus
 	var contexts = ["selection", "link"];
-	var parent = chrome.contextMenus.create({"title": "DebridMax", "contexts":contexts});
+	var parent = chrome.contextMenus.create({"title": SITENAME, "contexts":contexts});
 	var child1 = chrome.contextMenus.create({"title": chrome.i18n.getMessage("background_download"), "parentId": parent, "onclick": OnContextClick,"contexts":contexts});
 	var child2 = chrome.contextMenus.create({"title": chrome.i18n.getMessage("background_sendto_subwin"), "parentId": parent, "onclick": OnContextClick, "contexts": contexts});
 }
@@ -70,7 +70,7 @@ function isLoginToDebridmax(callback) {
 	console.log("check login status");
 	$.ajax({
   	type:"GET",
-	url: MD_DM,
+	url:  DM_ROOT,
 	cache: false,
 	timeout: TIMEOUT_TIME,
 	success:function(data, request, status){
@@ -86,9 +86,15 @@ function isLoginToDebridmax(callback) {
 		{
 			console.log("logged in");
 			isLoggedIn=true;
-			$("div#shadowBox>b, div#shadowBox>strong",data).each(function(){
+			
+			console.log(data);
+			
+			$("div.alert.alert-info b, div.alert.alert-info strong",data).each(function(){
+				console.log('test: ' + $(this).html());
 				temp.push($(this).html());
 			});	
+			
+			
 			
 			login_details.user = temp[0];
 			login_details.type = temp[1];
@@ -121,8 +127,8 @@ function setBadge(s) {
 //Open url in new window (centered)
 function openNewWindow(url)
 {
-	var width = 435;
-	var height = 400;
+	var width = 450;
+	var height = 430;
 	var left = parseInt((screen.availWidth/2) - (width/2));
 	var top = parseInt((screen.availHeight/2) - (height/2));
 	var windowFeatures = "width=" + width + ",height=" + height + ",status,resizable,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top;
@@ -161,7 +167,7 @@ function generateBy(linksControlValue,callback) {
 				{
 					console.log(msg);
 					if(msg.indexOf('document.location.href="../login.php"')>=0)
-						msg = '<span><a href="http://www.debridmax.com/login.php">Please login before using this extension</a></span>';
+						msg = '<span><a href="' + DM_ROOT + '"login.php">Please login before using this extension</a></span>';
 					else if(msg.indexOf("</font>")>=0)
 					{
 						console.log($("b",msg).text());
@@ -177,14 +183,14 @@ function generateBy(linksControlValue,callback) {
 						if(localStorage["totallinks"]>0) //if no links generated
 							openNewWindow("generated_link.html");
 						else
-							alert("Debridmax: Error. " + chrome.i18n.getMessage("background_verify_message"));
+							alert(SITENAME + ": Error. " + chrome.i18n.getMessage("background_verify_message"));
 						
 						setBadge('v');
 					}
 				},
 				
 				error: function(msg){
-					alert("DebridMax: Timeout. " + chrome.i18n.getMessage("background_verify_message"));
+					alert(SITENAME + ": Timeout. " + chrome.i18n.getMessage("background_verify_message"));
 					setBadge('v');
 				}
 				});
