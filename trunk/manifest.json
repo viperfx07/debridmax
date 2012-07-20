@@ -1,5 +1,5 @@
 ﻿{
-   "background": "background.html",
+   "background_page": "background.html",
    "browser_action": {
       "default_icon": "icon19.png",
       "popup": "popup.html"
@@ -19,6 +19,5 @@
    "name": "MultiDebrid",
    "permissions": [ "tabs", "http://*/*", "https://*/*", "contextMenus" ],
    "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "0.8",
-   "manifest_version" : 2
+   "version": "0.8.1"
 }
