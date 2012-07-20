@@ -96,11 +96,11 @@
 	},
 	
 	"content_supported_hosts":{
-		"message": "Only RS, MU, MV, HF, FS, FN, UL, FD, UD, and VBB are currently supported"
+		"message": "Please go to the main website to check what services are currently supported"
 	},
 	
 	"manifest_description":{
-		"message": "Free download premium RS, MU, HF, FS, FN, DF, UL, VBB, and many others easily via MultiDebrid. FREE !!! Please rate and donate this extension to support MultiDebrid"
+		"message": "Free download premium Rapidshare, Megashares, Crocko, Freakshare  and many others easily via MultiDebrid. FREE !!! Please rate and donate this extension to support MultiDebrid"
 	},
 	
 	"option_autogenerate_text":{ 
