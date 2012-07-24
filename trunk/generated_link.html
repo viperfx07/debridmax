@@ -23,6 +23,7 @@
 		var i;
 		for(i=0;i<totallinks;i++)
 		{
+			console.log(linksarray[i]);
 			links+=linksarray[i]+"\r\n";
 			anchorlinks += chrome.i18n.getMessage("generatedlink_link") + (i+1) + ': <a href='+linksarray[i]+'>'+textInLink[i]+'</a><br/>';
 		}
@@ -46,7 +47,7 @@
 		showTheLinks();
 		
 		$("#copy").click(function(){ 
-			chrome.extension.sendRequest({requestType:"cp", the_links:links});
+			chrome.extension.sendMessage({requestType:"cp", the_links:links});
 			});
 		});
 	//]]>

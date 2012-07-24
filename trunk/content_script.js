@@ -10,7 +10,7 @@ const TIMEOUT_TIME = 30000;
 
 var _linkFounds = [];
 var selectedText = '';
-var buttonIcon = 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACPklEQVR42qVSO2iaYRT1EY0ajYZIUTFBBUuyJPiCIgZRdLOBbBVRCVbpUJAOxcGhQRDpUoSCpVKlIrZQiQhugQw6OisIGQJOCuLg4Hp6v4+aRhJaaIfz893z33vuUyAQCMCg1Wqh0WiwslcQi8V3b5FQ+OC/gH0UCgWcTidsNttagF6vRz6fh9fr5XZifx/u7W0I7wt5lErod3fhcrlwdHwM5eYmnkilkJFQMBhEuVxGOp2GSCTCS6rwUiLBi50dSMjmAt+JeE/lH1ksODEYUKIMLbkcJZUKgYMDvLu4wHOPB2nia8S3KOiSgt+SmGpjA4Jn5FiTyfCVhH5Q5hzZYZ0OH7a20CD+Fdl1en+h9zcCE2D4TG0/JfAZ6OlHhBRPyNlObYTDYdgOD/FarcYnCk4RryPnj1Rpg5LEyVay7Ksh3ofP50M0GoXdbue29NdQFRTwZm8PJmrjwRbcbjfq9TpHo9FAKpWCnBzZahmXy+W4M5t+JpPhnNls/i0QiURwc3ODs7MzZLNZzOdz+P1+mEwmLBYLjMdjGI1GLjgcDrFcLvnW1gT6/f5dWcViEVdXV7DQZm5vb9FsNnF+fo5QKIRKpcIT/FEgmUxiNBrBarVygVgshna7jVKpxKv8q0ChUECv1+MVsNYMdB+TyYT7MO5RAdabw+FAIpHAdDrlmdgMBoMBv8Lr62tUq1U+h9lsti7ATrbb7XK0Wi2cnp7yievooGq1GneMx+MIBAJQ0210Oh0c0JU+egf/gP8T+Al1/60ec2qEYAAAAABJRU5ErkJggg==)';
+var buttonIcon = 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAIAAAD9MqGbAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAALCSURBVHjanJPPbltVEMZ/c+5NkUOu7ebaTptEDg2hQUpYlIJoAy+AhFhV0AViS3cgXoANKyqQeAUEAha0YlWp0AJSRQXij1KUNJVQwLHd1HEc994ktmJfz7C4TlSJXT+NdL5zZr5zzmhm5NU/NE4wA0PVUJxihhmmGKJqNjxRzExNjKzv/J2DZDcR1IZKMzdADUEGaqbO1NQwM4YMjMQT55wIiAgiIgLgxIRDk+HWCZIaCM7hEFIMVxEVEFFI41SGvpQoGJiIn95Nv697u6oqowHeiPa6g4OOKW6saEYSt0jzxGRsHMMEH0OTfv7OD+cn82bcXm83irMLe9W5/JPAla3OYD++EHQNwwz4amXVL5Tt5Aznfu3PXVn/5PqfZmZm7319a/ryte24Y2aVZjT50Y3SB1ftEVS2orMffrtwNXKA7sfzpRyHeP+5E2GQAf6qtrxsePF0Cfhptfbu57d+XKmWi9l3XjrVb9acGIOotThdOFK+vTSfknuNSJ4YXTyZA27e3fxGpy9/twq88uxk0m4M3yyHwdr9HeDcTDEMMmv1HeDO/Ycat86UC8Bv9bZ3bDQcHQHWG5Gfybokal2YLQHXVjaA18/Mtna7jbgDXK+3tROdKmW7veT39kHSrL7xwlPA2mbkjeXcYC9emMgByw8iIHPM/+zne4vT4Vp9x8uGU94gDDLNuPvm0+Mfnw1ee352oxl/uVzzj0+4ZD+aK+WAG/U20O0lN//ZCoPMcnXbZceXpvJAuRB8+tbLF5dO3621Ln1xe7M4L96IvPh9c3vj36RR80/M9DYr4jw/nOo/qPgTM/7UM/2Nv3ubFSPtW5Ng3C+UveOTeR85/0v/YY+0zmnF5GhWDAZO1Y5cZoYaJnkfR9ruAAZgw7gjyv9hmJnjceHUHkc2MPwxP/35YW4CkvY26kCxR9I2AwUl6/PfAJO6qxL3+U6nAAAAAElFTkSuQmCC)';
 
 var hostFilter = new Array(
     /(http|https):\/\/(\w+\.)?rapidshare\.com\/(files\/[^\"\r\n< ]+|#!download[^\"\r\n< ]+)/g,
@@ -68,8 +68,8 @@ var ContextButton = function()
 		{
 			margin = '0px';
 			padding = '0px';
-			width = '16px';
-			height = '16px';
+			width = '19px';
+			height = '19px';
 			position = 'absolute';
 			cursor = 'pointer';
 			border = 'none';
@@ -86,7 +86,7 @@ var ContextButton = function()
 			function(e)
 			{
 				thelinks = ((_linkFounds.toString()).split(",")).join("\n");
-				chrome.extension.sendRequest({'requestType' : 'dl', 'the_links' : thelinks	});
+				chrome.extension.sendMessage({'requestType' : 'dl', 'the_links' : thelinks	});
                 e.stopPropagation();
 			},
 			false);
@@ -301,7 +301,7 @@ function filterTheLink(link) {
 }
 
 //Draw Download and Download All for tag that contains download links.
-$("td.code, pre, blockquote").each(function() {
+$("td.code, pre, blockquote, div.code").each(function() {
 		setButtons($(this));
 });
 
@@ -310,29 +310,31 @@ $('.downloadSelected').click(
 	function(){
 		var _linkFounds = checkMultiLink(viewPartialSourceForSelection());
 		thelinks = ((_linkFounds.toString()).split(",")).join("\n");
-		chrome.extension.sendRequest({'requestType' : 'dl', 'the_links' : thelinks	});
+		chrome.extension.sendMessage({'requestType' : 'dl', 'the_links' : thelinks	});
 });
 	
 //BEGIN Direct Download Functions
 
 //change the link element's class for certain filehosts into class directlyDownloaded
 //It enables users to directly generate the link the users click.
-chrome.extension.sendRequest({requestType:"getAutoGenVal"}, function(response){
-	if(response.auto_gen_val==1)
-	{
-		$("a[href]").each(
-			function()
-			{
-				var ori_link = $(this).attr('href');
-				if(filterTheLink(ori_link)>=0)
-					$(this).attr({class:"directlyDownload"});
-			}
-		);
+chrome.extension.sendMessage({requestType:"getAutoGenVal"}, function(response){
+	if(response){
+		if(response.auto_gen_val==1)
+		{
+			$("a[href]").each(
+				function()
+				{
+					var ori_link = $(this).attr('href');
+					if(filterTheLink(ori_link)>=0)
+						$(this).attr({class:"directlyDownload"});
+				}
+			);
 
-		$("a.directlyDownload").click(function(){
-			chrome.extension.sendRequest({requestType:"dl", the_links: $(this).attr('href')});
-			return false;
-		});
+			$("a.directlyDownload").click(function(){
+				chrome.extension.sendMessage({requestType:"dl", the_links: $(this).attr('href')});
+				return false;
+			});
+		}
 	}
 });
 
@@ -355,7 +357,7 @@ $('.downloadAll').click(
 		}
 				
 		thelinks = $.trim(result.join("\n"));
-		chrome.extension.sendRequest({requestType:"dl", the_links:thelinks});
+		chrome.extension.sendMessage({requestType:"dl", the_links:thelinks});
 	
 });
 
