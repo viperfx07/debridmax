@@ -12,13 +12,11 @@ Modified by: viperfx07
 	<link rel="icon" href="favicon.ico" type="image/x-icon" /> 
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> 
 	<link rel="stylesheet" href="style.css" type="text/css"/>
-    <script src="../jquery.js" type="text/javascript"></script>
-	<script type="text/javascript"></script>
+    <script src="../jquery.js"></script>
+	<script src="option.js"></script>
 </head>
 
 <body>
-
-
 <div id="tabbed_box_1" class="tabbed_box">
 	<h4>Option Page</h4>
     <div class="tabbed_area">
@@ -29,20 +27,12 @@ Modified by: viperfx07
         
         <div id="content_1" class="content" style="display: block; ">
         	<ul>
-				<li><p style="font-style:italic; font-weight:bold;">
-							</script></p></li>
+				<li><p style="font-style:italic; font-weight:bold;" class="premiumnote"></p></li>
             	<li>
 					<div id="auto-generate">
-						<p style="font-weight:bold; text-decoration:underline"><script type="text/javascript">
-							//<![CDATA[
-							document.write(chrome.i18n.getMessage("option_autogenerate_text") + ": ");
-							//]]>
-							</script>
-						<input type="checkbox" id="auto_generate" value="1" /></p>
-						<small><script type="text/javascript">
-						//<![CDATA[
-						document.write(chrome.i18n.getMessage("option_autogenerate_note"));
-						//]]></script></small>
+						<input type="checkbox" id="auto_generate" value="1" style="float:left;" />
+						<p style="font-weight:bold; text-decoration:underline;"></p>
+						<small></small>
 					</div>
 				</li>
             </ul>
