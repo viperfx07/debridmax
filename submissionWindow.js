@@ -40,7 +40,7 @@
 			
 			
 			$("img#loader").show();
-			chrome.extension.sendRequest({requestType:"dl", the_links:links},function(){
+			chrome.extension.sendMessage({requestType:"dl", the_links:links},function(){
 				$("img#loader").hide();
 			});	
 		});

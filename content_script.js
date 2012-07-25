@@ -37,9 +37,16 @@ var hostFilter = new Array(
 	/http:\/\/(\w+\.)?(easy-share|crocko)\.com\/[0-9]{10}\//g,
 	/http:\/\/(\w+\.)?uploadbox\.com\/([a-zA-Z]+\/)?files\/[0-9a-z]+[^( |"|>|<|\r\n\|\n|$)]+/g,
 	/http:\/\/(www\.)?purevid\.com\/v\/[^( |"|>|<|\r\n\|\n|$)]+/g,
-	/http:\/\/(www\.)?(uploadhere|uploadking)\.com\/[^( |"|>|<|\r\n\|\n|$)]+/g	,
+	/http:\/\/(www\.)?(uploadhere|uploadking|jumbofiles)\.com\/[^( |"|>|<|\r\n\|\n|$)]+/g	,
 	/http:\/\/(\w+\.)?freakshare\.(net|com)\/files\/[0-9a-zA-Z]+\/[^( |"|>|<|\r\n\|\n|$)]+/g,
-	/http:\/\/(www\.)?uptobox\.com\/[^( |"|>|<|\r\n\|\n|$)]+/g
+	/http:\/\/(www\.)?uptobox\.com\/[^( |"|>|<|\r\n\|\n|$)]+/g,
+	/(http):\/\/(([0-9a-zA-Z]+)\.)?1fichier\.com\//g,
+	/http:\/\/(\w+\.)?bayfiles\.com\/([a-zA-Z]+\/)?file\/[^\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?extabit\.com\/file\/[0-9a-zA-Z]+/g,
+	/(http):\/\/(\w+\.)?filepost\.com\/(files\/[^\"\r\n< ]+|#!download[^\"\r\n< ]+)/g,
+	/http:\/\/(\w+\.)?gigasize\.com\/(get)\/[^\/\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?letitbit\.net\/(download)\/[^\/\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?purevid\.com\/(v)\/[^\/\"\r\n< ]+/g
 	);
 
 function checkMultiLink(link) {

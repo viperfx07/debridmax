@@ -235,6 +235,7 @@ chrome.extension.onMessage.addListener(
 	}
 	else
 		sendResponse({});
+	return true;
 });
 
 //First thing to do

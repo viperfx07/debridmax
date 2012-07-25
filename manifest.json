@@ -1,5 +1,5 @@
 ﻿{
-   "manifest_version" : 2,
+   "manifest_version" : 1,
    "background": {
 	"page" : "background.html"
 	},
@@ -18,10 +18,11 @@
    "description": "__MSG_manifest_description__",
    "options_page": "./options/option.html",
    "icons": {
+	  "19" :	"icon19.png",
       "128": "icon128.png"
    },
    "name": "MultiDebrid",
    "permissions": [ "tabs", "http://*/*", "https://*/*", "contextMenus" ],
    "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "0.8.1"
+   "version": "0.8.2"
 }
