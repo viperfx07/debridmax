@@ -46,7 +46,8 @@ var hostFilter = new Array(
 	/(http):\/\/(\w+\.)?filepost\.com\/(files\/[^\"\r\n< ]+|#!download[^\"\r\n< ]+)/g,
 	/http:\/\/(\w+\.)?gigasize\.com\/(get)\/[^\/\"\r\n< ]+/g,
 	/http:\/\/(\w+\.)?letitbit\.net\/(download)\/[^\/\"\r\n< ]+/g,
-	/http:\/\/(\w+\.)?purevid\.com\/(v)\/[^\/\"\r\n< ]+/g
+	/http:\/\/(\w+\.)?purevid\.com\/(v)\/[^\/\"\r\n< ]+/g,
+	/http:\/\/(\w+\.)?(turbobit.net|uploadboost.com|queenshare.com)\/[0-9a-zA-Z]+/g
 	);
 
 function checkMultiLink(link) {
@@ -324,6 +325,7 @@ $('.downloadSelected').click(
 
 //change the link element's class for certain filehosts into class directlyDownloaded
 //It enables users to directly generate the link the users click.
+
 chrome.extension.sendMessage({requestType:"getAutoGenVal"}, function(response){
 	if(response){
 		if(response.auto_gen_val==1)

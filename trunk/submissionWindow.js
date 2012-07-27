@@ -58,7 +58,7 @@
 		$("#text1").html(chrome.i18n.getMessage("submissionWindows_note"));
 		$("#text2").html(chrome.i18n.getMessage("submissionWindows_title"));
 		$("#pass_note").html(chrome.i18n.getMessage("submissionWindow_mu_password"));
-		$("#logo").html("<a href='#' id='gotodebrid'><img src='logo.png' height='100' /></a>");
+		$("#logo").html("<a href='#' id='gotodebrid'><img src='logo.png' width='83px'/><img src='logo.png' width='83px'/><img src='logo.png' width='83px'/></a>");
 		$("a#donatelink").attr('href','#');
 		
 		$("a#donatelink").click(function(){

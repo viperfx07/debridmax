@@ -144,10 +144,8 @@ function generateBy(linksControlValue,callback) {
 					if(msg.indexOf('document.location.href="../login.php"')>=0)
 						msg = '<span><a href="' + DM_ROOT + '"login.php">Please login before using this extension</a></span>';
 					else if(msg.indexOf("</font>")>=0)
-					{
-						console.log($("div.errorlinksdiv.unvalidlink",msg).text());
 						msg = '<span><a href="#">' + $("font",msg).text() + '</a></span>';
-					}				
+									
 					localStorage["linksarray"] = localStorage["linksarray"] + $("a[href]:first",msg).attr('href') + '|||';
 					localStorage["textInLink"] = localStorage["textInLink"] + $("a[href]:first",msg).html() + '|||';
 					localStorage["totallinks"]++;
@@ -227,6 +225,7 @@ chrome.extension.onMessage.addListener(
 	}
 	else if(request.requestType == "getAutoGenVal")
 	{
+		console.log(request.requestType);
 		sendResponse({auto_gen_val: localStorage["auto-generate-click"]});
 	}
 	else if(request.requestType == "checkLogin")
